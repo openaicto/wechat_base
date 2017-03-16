@@ -1,0 +1,13 @@
+a:0:{}a:0:{}a:0:{}a:0:{}a:4:{s:9:"signature";s:40:"3dc1cd7888c5b53cb61f36eb46246749ebae43f5";s:7:"echostr";s:19:"1922393926978606879";s:9:"timestamp";s:10:"1489569539";s:5:"nonce";s:9:"333339899";}a:4:{s:9:"signature";s:40:"352ed961a2ec919aa8ae23f4f59a8b77f7beaa90";s:9:"timestamp";s:10:"1489569573";s:5:"nonce";s:9:"342224906";s:6:"openid";s:28:"oPs5ouLW3qg7P6CLj-jS7M1XVtSw";}a:4:{s:9:"signature";s:40:"8b6eeeaae117ac3aecb29e0b03b3097c0050078f";s:7:"echostr";s:19:"1394104450264184831";s:9:"timestamp";s:10:"1489572252";s:5:"nonce";s:9:"252646668";}post数据为空8
+post数据为空8
+post数据为空8
+<xml><ToUserName><![CDATA[gh_638aabd86eac]]></ToUserName>
+<FromUserName><![CDATA[opdZEt_uOSZnzn9ZKAnkH1N491dA]]></FromUserName>
+<CreateTime>1468555014</CreateTime>
+<MsgType><![CDATA[text]]></MsgType>
+<Content><![CDATA[php]]></Content>
+<Event>...</Event>
+<MsgId>6307395757914917125</MsgId>
+</xml>
+
+post数据为空8
