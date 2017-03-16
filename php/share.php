@@ -10,10 +10,22 @@ $signPackage = $jssdk->GetSignPackage();
   <meta charset="UTF-8">
   <title></title>
   <link rel="stylesheet" href="//g.alicdn.com/msui/sm/0.6.2/css/sm.min.css">
+  <link rel="stylesheet" href="style.css">
 
 </head>
 <body>
-  到朋友圈分享
+      <div class="wxapi_container">
+        <div class="lbox_close wxapi_form">
+            <h3 id="menu-share">分享公开课</h3>
+            <span class="desc">标题、描述和图片都可以自由定义，不一定在网页里</span>
+            <button class="btn btn_primary" id="openShareApp">注册自定义分享给好友内容</button>
+            <button class="btn btn_primary" id="openShareTimeline">注册自定义分享朋友圈内容</button>
+
+            <h3 id="menu-share">计数分享</h3>
+            <span class="desc">每次一分享的内容都可以不一样</span>
+            <button class="btn btn_primary" id="openShareCounter">计数分享到朋友圈</button>
+        </div>
+    </div>
 </body>
 <script type='text/javascript' src='//g.alicdn.com/sj/lib/zepto/zepto.min.js' charset='utf-8'></script>
 <script type='text/javascript' src='//g.alicdn.com/msui/sm/0.6.2/js/sm.min.js' charset='utf-8'></script>
