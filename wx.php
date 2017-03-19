@@ -24,6 +24,9 @@
 
 // phpinfo();
 // die;
+require('./daily.php');
+$DailTitle =  Daily::GetDailTitle();
+print_r($DailTitle);
 function checkSignature()
 {
 	if (empty($_GET['echostr'])) {
@@ -119,7 +122,7 @@ if ($xml->MsgType == 'event') {
 }
 else {
 	if ($xml->Content == 'p') {
-$data = array(
+		$data = array(
                         array('title'=>'photo','url'=>'http://www.ucai.cn','picurl'=>'https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=3891964583,2645622568&fm=96&s=B10F97589A838F031B6B7459030050FC','desc'=>'it is a photo'),
                         array('title'=>'欢迎,照片'),
                 );
@@ -127,7 +130,13 @@ $data = array(
 	}
 	elseif ($xml->Content == 'photo') {
 		replyMsg('see photo');
-	} else {
+	}elseif ($xml->Content == '知乎日报') {
+		$DailTitle =  Daily::GetDailTitle();
+		// $DailTitle =  "哈哈哈哈";
+
+		replyMsg($DailTitle);
+	} 
+	else {
 		$uid = md5($xml->FromUserName);
 		session_id($uid);
 		session_start();
@@ -141,6 +150,7 @@ $data = array(
 	}
 
 }
+
 
 
 

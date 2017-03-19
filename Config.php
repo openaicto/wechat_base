@@ -3,6 +3,8 @@
 /**
 * 配置信息
 */
+$basedir = dirname(__FILE__); 
+print_r($basedir);
 class Config
 {	
     const APPID = 'wx43953f2495f6d1cc';
