@@ -38,7 +38,7 @@ function checkSignature()
     $timestamp = $_GET["timestamp"];
     $nonce = $_GET["nonce"];
     
-	$token = 'someetweixin';
+	$token = 'starkweixin';
 	$tmpArr = array($token, $timestamp, $nonce);
 	sort($tmpArr, SORT_STRING);
 	$tmpStr = implode( $tmpArr );
@@ -128,6 +128,7 @@ else {
                 );
                 replyArticle($data);
 	}
+
 	elseif ($xml->Content == 'photo') {
 		replyMsg('see photo');
 	}elseif ($xml->Content == '知乎日报') {
@@ -135,7 +136,23 @@ else {
 		// $DailTitle =  "哈哈哈哈";
 
 		replyMsg($DailTitle);
-	} 
+	}elseif ($xml->Content == 'x') {
+		$content = "钢铁侠";
+		$arrdata = [];
+		$data = [
+                	['title'=>'photo','url'=>'http://www.ucai.cn','picurl'=>'https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=3891964583,2645622568&fm=96&s=B10F97589A838F031B6B7459030050FC','desc'=>'it is a photo'],
+                ['title'=>'欢迎,照片'],
+        );		
+		$data1 = [
+                	['title'=>'photo','url'=>'http://www.ucai.cn','picurl'=>'https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=3891964583,2645622568&fm=96&s=B10F97589A838F031B6B7459030050FC','desc'=>'it is a photo'],
+                ['title'=>'欢迎,照片'],
+        );
+		$arrdata[] =$data;
+		$arrdata[] =$data1;
+		
+        replyArticle($arrdata);
+		// $result = SearchMovie::search($content);
+	}
 	else {
 		$uid = md5($xml->FromUserName);
 		session_id($uid);
