@@ -25,5 +25,5 @@ git study 1
            git status  随时掌握工作区的状态
 		   git diff    可以查看被修改的内容
 ３.版本回退
-　　　git log　	       查看版本的历史记录	   
-		   
+　　　git log　	       查看版本的历史记录
+      -----	   
