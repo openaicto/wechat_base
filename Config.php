@@ -4,10 +4,9 @@
 * 配置信息
 */
 $basedir = dirname(__FILE__); 
-print_r($basedir);
 class Config
 {	
-    const APPID = 'wx43953f2495f6d1cc';
-    const APPSECRET = '6f9962be39cf55d8c85fd0ae4ea0b4e7';
+    // const APPID = 'wx663f128c36e92c8f';
+    // const APPSECRET = '70481d36bbd3a680f91be38a752759c8';
     const TOKEN = 'someetweixin';
 }

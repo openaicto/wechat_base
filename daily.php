@@ -1,5 +1,5 @@
 <?php
-require('./Curl.php');
+require_once('./Curl.php');
 // require('./config.php');
 
 /**
@@ -14,15 +14,15 @@ class Daily
 		$data = Curl::CurlGet($url);
 		$data = json_decode($data);
 		$data = self::ObjectArray($data);
-		$strdata = '';
-		foreach ($data['stories'] as $key => $value) {
-			$strdata .=   $value['title']."\n\n";
-			// return $value['title'];
-			// print_r($value['title']."\n");
-			// die;
-		}
-		// print_r($strdata);
-		return $strdata;
+		// $strdata = '';
+		// foreach ($data['stories'] as $key => $value) {
+		// 	$strdata .=   $value['title']."\n\n";
+		// 	// return $value['title'];
+		// 	// print_r($value['title']."\n");
+		// 	// die;
+		// }
+		// print_r($data);
+		return $data['stories'];
 	}
 
 	public static function ObjectArray($array) {  
@@ -38,4 +38,13 @@ class Daily
 }
 
 // $DailTitle =  Daily::GetDailTitle();
-// print_r($DailTitle);
+// 		$data  = [];
+// 		foreach ($DailTitle as $key => $value) {
+// 			$data[] = [
+// 	                	'title'=>$value['title'],
+// 	                	'url'=>'http://www.baidu.com',
+// 	                	'picurl'=>$value['images'][0],
+// 	                	'desc'=>$value['title']
+//                 	];
+// 		}
+// print_r(array_slice($data, 1,9));

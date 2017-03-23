@@ -25,8 +25,8 @@
 // phpinfo();
 // die;
 require('./daily.php');
-$DailTitle =  Daily::GetDailTitle();
-print_r($DailTitle);
+// $DailTitle =  Daily::GetDailTitle();
+
 function checkSignature()
 {
 	if (empty($_GET['echostr'])) {
@@ -132,38 +132,62 @@ else {
 	elseif ($xml->Content == 'photo') {
 		replyMsg('see photo');
 	}elseif ($xml->Content == '知乎日报') {
+
 		$DailTitle =  Daily::GetDailTitle();
+		$data  = [];
+		foreach ($DailTitle as $key => $value) {
+			$data[] = [
+	                	'title'=>$value['title'],
+	                	'url'=>'http://www.baidu.com',
+	                	'picurl'=>$value['images'][0],
+	                	'desc'=>$value['title']
+                	];
+		}
 		// $DailTitle =  "哈哈哈哈";
 
-		replyMsg($DailTitle);
+		replyArticle(array_slice($data,1,8));
 	}elseif ($xml->Content == 'x') {
-		$content = "钢铁侠";
+		// $content = "钢铁侠";
 		$arrdata = [];
-		$data = [
-                	['title'=>'photo','url'=>'http://www.ucai.cn','picurl'=>'https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=3891964583,2645622568&fm=96&s=B10F97589A838F031B6B7459030050FC','desc'=>'it is a photo'],
-                ['title'=>'欢迎,照片'],
-        );		
-		$data1 = [
-                	['title'=>'photo','url'=>'http://www.ucai.cn','picurl'=>'https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=3891964583,2645622568&fm=96&s=B10F97589A838F031B6B7459030050FC','desc'=>'it is a photo'],
-                ['title'=>'欢迎,照片'],
-        );
-		$arrdata[] =$data;
-		$arrdata[] =$data1;
-		
+		$arrdata[] = [
+                	'title'=>'photo',
+                	'url'=>'http://www.ucai.cn',
+                	'picurl'=>'https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=3891964583,2645622568&fm=96&s=B10F97589A838F031B6B7459030050FC',
+                	'desc'=>'it is a photo'
+                	];
+
+		$arrdata[] = 
+                	['title'=>'photo','url'=>'http://www.ucai.cn','picurl'=>'https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=3891964583,2645622568&fm=96&s=B10F97589A838F031B6B7459030050FC','desc'=>'it is a photo'];
         replyArticle($arrdata);
 		// $result = SearchMovie::search($content);
 	}
 	else {
-		$uid = md5($xml->FromUserName);
-		session_id($uid);
-		session_start();
+		require ('./searchMovie.php');
+		$content = $xml->Content;
+		$result = SearchMovie::getMoiveData($content);
+		$data = [];
+		foreach ($result as $value) {
+			$desc = implode(",", $value['genres']);
+			$data[] = [
+	                	'title'=>$value['title'],
+	                	'url'=>$value['alt'],
+	                	'picurl'=>$value['images']['medium'],
+	                	'desc'=>$desc,
+                	];
+		}
+		// replyMsg("111");
+		replyArticle(array_slice($data,1,8));
 
-		//上一次输入
-		$old_content = $_SESSION['content'];
-		//这一次用户的输入
-		$_SESSION['content'] = strval($xml->Content);
+		// $uid = md5($xml->FromUserName);
+		// session_id($uid);
+		// session_start();
 
-		replyMsg('now:'.$xml->Content.',last:'.$old_content);
+		// //上一次输入
+		// $old_content = $_SESSION['content'];
+		// //这一次用户的输入
+		// $_SESSION['content'] = strval($xml->Content);
+
+		// replyMsg('now:'.$xml->Content.',last:'.$old_content);
 	}
 
 }
